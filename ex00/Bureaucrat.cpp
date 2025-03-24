@@ -6,7 +6,7 @@
 /*   By: maustel <maustel@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 17:03:43 by maustel           #+#    #+#             */
-/*   Updated: 2025/03/20 17:23:29 by maustel          ###   ########.fr       */
+/*   Updated: 2025/03/24 17:29:43 by maustel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,9 @@ Bureaucrat::Bureaucrat():_name(NULL), _grade(150)
 {}
 
 Bureaucrat::Bureaucrat(const std::string name, int grade):_name(name), _grade(grade)
-{}
+{
+	this->checkGrade();
+}
 
 Bureaucrat::~Bureaucrat()
 {}
@@ -49,19 +51,43 @@ int Bureaucrat::getGrade() const
 
 void Bureaucrat::incrementGrade()
 {
-	this->_grade--;
-	//DO SOME CHECKS AND THROW ERROR
+	if (this->_grade - 1 < 1)
+		throw (GradeTooHighException());
+	else
+		this->_grade--;
 }
 
 void Bureaucrat::decrementGrade()
 {
-	this->_grade++;
-	//DO SOME CHECKS AND THROW ERROR
+	if (this->_grade + 1 > 150)
+		throw (GradeTooLowException());
+	else
+		this->_grade++;
+}
+
+void Bureaucrat::checkGrade()
+{
+	if (this->_grade > 150)
+		throw (GradeTooLowException());
+	else if (this->_grade < 1)
+		throw (GradeTooHighException());
+}
+
+//----------------------------------------------exceptions-----------------------------------------
+const char *Bureaucrat::GradeTooHighException::what() const noexcept
+{
+	return ("Error: Grade too high!");
+}
+
+const char *Bureaucrat::GradeTooLowException::what() const noexcept
+{
+	return ("Error: Grade too low!");
 }
 
 //----------------------------------------------others-----------------------------------------
 
-std::ostream &operator<<(std::__1::ostream &os, const Bureaucrat &bureaucrat)
+std::ostream &operator<<(std::ostream &os, const Bureaucrat &bureaucrat)
 {
 	os << bureaucrat.getName() << ", bureaucrat grade " << bureaucrat.getGrade() << std::endl;
+	return (os);
 }
