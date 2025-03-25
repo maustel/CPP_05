@@ -6,7 +6,7 @@
 /*   By: maustel <maustel@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 16:51:59 by maustel           #+#    #+#             */
-/*   Updated: 2025/03/24 17:10:49 by maustel          ###   ########.fr       */
+/*   Updated: 2025/03/25 10:31:00 by maustel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,5 +49,16 @@ class Bureaucrat
 };
 
 std::ostream& operator<<(std::ostream& os, const Bureaucrat& bureaucrat);
+
+// colors
+#define BLK "\e[0;30m"    // Black
+#define RED "\e[0;31m"    // Red
+#define GRN "\e[0;32m"    // Green
+#define YEL "\e[0;33m"    // Yellow
+#define BLU "\e[0;34m"    // Blue
+#define MAG "\e[0;35m"    // Magenta
+#define CYN "\e[0;36m"    // Cyan
+#define WHT "\e[0;37m"    // White
+#define RESET "\e[0m"	 // Reset color
 
 #endif
