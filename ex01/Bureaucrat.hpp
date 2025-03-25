@@ -6,7 +6,7 @@
 /*   By: maustel <maustel@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 16:51:59 by maustel           #+#    #+#             */
-/*   Updated: 2025/03/25 10:31:00 by maustel          ###   ########.fr       */
+/*   Updated: 2025/03/25 13:11:54 by maustel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <iostream>
 # include <string>
+# include "Form.hpp"
 
 class Bureaucrat
 {
@@ -23,18 +24,21 @@ class Bureaucrat
 	int					_grade;
 
 	public:
+	//---------------------canonical-------------------------
 	Bureaucrat();
 	Bureaucrat(const std::string name, int grade);
 	~Bureaucrat();
 	Bureaucrat(const Bureaucrat& other);
 	Bureaucrat& operator=(const Bureaucrat& other);
 
+	//---------------------member functions-------------------------
 	const std::string getName() const;
 	int	getGrade() const;
 	void incrementGrade();
 	void decrementGrade();
 	void checkGrade();
 
+	//---------------------exceptions-------------------------
 	class GradeTooHighException: public std::exception
 	{
 		public:
@@ -48,6 +52,7 @@ class Bureaucrat
 	};
 };
 
+//---------------------others-------------------------
 std::ostream& operator<<(std::ostream& os, const Bureaucrat& bureaucrat);
 
 // colors

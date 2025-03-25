@@ -17,6 +17,15 @@ int main ()
 	//-----------------------------------constructor works
 	Bureaucrat David("David", 150);
 	std::cout << David;
+
+	//-----------------------------------copy constructer / Assignment operator tests
+	std::cout << MAG << "[copy constructer / Assignment operator tests]" << RESET << std::endl;
+	Bureaucrat Other(David);
+	Bureaucrat Walter("Walter", 1);
+	std::cout << Other;
+	std::cout << Walter;
+	Other = Walter;
+	std::cout << Other;
 	// ----------------------------------increment works
 	try
 	{

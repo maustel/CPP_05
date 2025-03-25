@@ -6,7 +6,7 @@
 /*   By: maustel <maustel@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 17:03:43 by maustel           #+#    #+#             */
-/*   Updated: 2025/03/24 17:29:43 by maustel          ###   ########.fr       */
+/*   Updated: 2025/03/25 11:34:42 by maustel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,15 +25,13 @@ Bureaucrat::Bureaucrat(const std::string name, int grade):_name(name), _grade(gr
 Bureaucrat::~Bureaucrat()
 {}
 
-Bureaucrat::Bureaucrat(const Bureaucrat& other)
-{
-	*this = other;
-}
+Bureaucrat::Bureaucrat(const Bureaucrat& other): _name(other._name), _grade(other._grade)
+{}
 
 Bureaucrat& Bureaucrat::operator=(const Bureaucrat& other)
 {
 	this->_grade = other._grade;
-	std::cout << "Assignment operator: Name cannot be changed." << this->_name << " stays the same." << std::endl;
+	std::cout << "Assignment operator: Name cannot be changed since it is constant. " << this->_name << " stays the same." << std::endl;
 	return (*this);
 }
 
