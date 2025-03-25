@@ -6,7 +6,7 @@
 /*   By: maustel <maustel@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 17:03:43 by maustel           #+#    #+#             */
-/*   Updated: 2025/03/25 11:34:42 by maustel          ###   ########.fr       */
+/*   Updated: 2025/03/25 16:12:52 by maustel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,18 @@ void Bureaucrat::checkGrade()
 		throw (GradeTooLowException());
 	else if (this->_grade < 1)
 		throw (GradeTooHighException());
+}
+
+void Bureaucrat::signForm(Form& form)
+{
+	try
+	{
+		form.beSigned(*this);
+	}
+	catch (const std::exception& e)
+	{
+		std::cerr << RED << e.what() << RESET << std::endl;
+	}
 }
 
 //----------------------------------------------exceptions-----------------------------------------
