@@ -28,6 +28,7 @@ class Form
 
 	public:
 	//---------------------canonical-------------------------
+	Form();
 	Form(const std::string name, int grade_sign, int grade_ex);
 	~Form();
 	Form(const Form& other);
@@ -43,12 +44,6 @@ class Form
 	void beSigned(Bureaucrat& bureaucrat);
 
 	//---------------------exceptions-------------------------
-	class GradeTooHighException: public std::exception
-	{
-		public:
-		const char* what() const noexcept;
-	};
-
 	class GradeTooLowException: public std::exception
 	{
 		public:

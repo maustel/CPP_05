@@ -6,7 +6,7 @@
 /*   By: maustel <maustel@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 17:03:43 by maustel           #+#    #+#             */
-/*   Updated: 2025/03/25 16:12:52 by maustel          ###   ########.fr       */
+/*   Updated: 2025/03/26 10:40:52 by maustel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,19 +79,20 @@ void Bureaucrat::signForm(Form& form)
 	}
 	catch (const std::exception& e)
 	{
-		std::cerr << RED << e.what() << RESET << std::endl;
+		std::cerr << RED << this->_name << " failed to sign form " << form.getName()
+			<< " because of: " << e.what() << RESET << std::endl;
 	}
 }
 
 //----------------------------------------------exceptions-----------------------------------------
 const char *Bureaucrat::GradeTooHighException::what() const noexcept
 {
-	return ("Error: Grade too high!");
+	return ("Bureaucrat exception: Grade too high!");
 }
 
 const char *Bureaucrat::GradeTooLowException::what() const noexcept
 {
-	return ("Error: Grade too low!");
+	return ("Bureaucrat exception: Grade too low!");
 }
 
 //----------------------------------------------others-----------------------------------------

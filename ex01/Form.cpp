@@ -6,13 +6,20 @@
 /*   By: maustel <maustel@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 11:44:01 by maustel           #+#    #+#             */
-/*   Updated: 2025/03/25 16:04:36 by maustel          ###   ########.fr       */
+/*   Updated: 2025/03/26 10:45:17 by maustel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Form.hpp"
 
 //--------------------------------------------------------------canonical
+Form::Form():
+	_name("DefaultForm"),
+	_is_signed(false),
+	_grade_sign(150),
+	_grade_execute(150)
+{}
+
 Form::Form(const std::string name, int grade_sign, int grade_ex):
 	_name(name),
 	_is_signed(false),
@@ -72,14 +79,9 @@ void Form::beSigned(Bureaucrat& bureaucrat)
 }
 
 //--------------------------------------------------------------exceptions
-const char* Form::GradeTooHighException::what() const noexcept
-{
-	return ("Error: Grade too high!");
-}
-
 const char* Form::GradeTooLowException::what() const noexcept
 {
-	return ("Error: Grade too low!");
+	return ("Form exception: bureaucrat grade too low!");
 }
 
 //--------------------------------------------------------------other
