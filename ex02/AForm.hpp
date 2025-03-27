@@ -40,8 +40,12 @@ class AForm
 	int getGradeSign() const;
 	int getGradeExecute() const;
 
+	//---------------------setters-------------------------
+	void setSignedStatus(bool);
+
 	//---------------------other members-------------------------
 	void beSigned(Bureaucrat& bureaucrat);
+	virtual void execute(Bureaucrat const & executor) const = 0;
 
 	//---------------------exceptions-------------------------
 	class GradeTooLowException: public std::exception
