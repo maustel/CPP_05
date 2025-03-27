@@ -6,7 +6,7 @@
 /*   By: maustel <maustel@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 11:44:01 by maustel           #+#    #+#             */
-/*   Updated: 2025/03/26 10:45:17 by maustel          ###   ########.fr       */
+/*   Updated: 2025/03/27 14:54:16 by maustel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,8 @@ Form::Form(const Form &other):
 
 Form& Form::operator=(const Form& other)
 {
-	if (this != &other) {
-        this->_is_signed = other._is_signed;
-    }
+	if (this != &other)
+		this->_is_signed = other._is_signed;
 	std::cout << RED << "No assignment of const variables!" << RESET << std::endl;
 	return (*this);
 }
