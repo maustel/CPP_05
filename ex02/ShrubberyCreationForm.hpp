@@ -18,6 +18,9 @@
 
 class ShrubberyCreationForm: public AForm
 {
+	private:
+	std::string _target;
+
 	public:
 	//----------------------- canonical form -----------------------
 	ShrubberyCreationForm();
@@ -27,7 +30,8 @@ class ShrubberyCreationForm: public AForm
 	ShrubberyCreationForm& operator=(const ShrubberyCreationForm& other);
 
 	//----------------------- member functions -----------------------
-	void execute(Bureaucrat const & executor) const;
+	// void execute(Bureaucrat const & executor) const;
+	void performExecution() const;
 };
 
 #endif

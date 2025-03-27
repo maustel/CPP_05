@@ -6,7 +6,7 @@
 #    By: maustel <maustel@student.42heilbronn.de    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/20 16:48:14 by maustel           #+#    #+#              #
-#    Updated: 2025/03/25 11:37:00 by maustel          ###   ########.fr        #
+#    Updated: 2025/03/27 16:17:07 by maustel          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ CC = c++
 
 FLAGS = -Wall -Wextra -Werror -std=c++17
 
-SRCS = main.cpp Bureaucrat.cpp Form.cpp
+SRCS = main.cpp Bureaucrat.cpp AForm.cpp ShrubberyCreationForm.cpp
 OBJS = $(SRCS:.cpp=.o)
 
 all: $(NAME)

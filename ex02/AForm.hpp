@@ -41,14 +41,23 @@ class AForm
 	int getGradeExecute() const;
 
 	//---------------------setters-------------------------
-	void setSignedStatus(bool);
+	// void setSignedStatus(bool);
 
 	//---------------------other members-------------------------
+	void checkGrade(const Bureaucrat& bureaucrat) const;
+	void checkSigned() const;
 	void beSigned(Bureaucrat& bureaucrat);
-	virtual void execute(Bureaucrat const & executor) const = 0;
+	void execute(Bureaucrat const& executor) const;
+	virtual void performExecution() const = 0;
 
 	//---------------------exceptions-------------------------
 	class GradeTooLowException: public std::exception
+	{
+		public:
+		const char* what() const noexcept;
+	};
+
+	class FormNotSignedException: public std::exception
 	{
 		public:
 		const char* what() const noexcept;

@@ -39,9 +39,8 @@ AForm::AForm(const AForm &other):
 
 AForm& AForm::operator=(const AForm& other)
 {
-	if (this != &other) {
-        this->_is_signed = other._is_signed;
-    }
+	if (this != &other)
+		this->_is_signed = other._is_signed;
 	std::cout << RED << "No assignment of const variables!" << RESET << std::endl;
 	return (*this);
 }
@@ -78,10 +77,42 @@ void AForm::beSigned(Bureaucrat& bureaucrat)
 	}
 }
 
+void AForm::checkGrade(const Bureaucrat &bureaucrat) const
+{
+	if (bureaucrat.getGrade() > this->getGradeSign() || bureaucrat.getGrade() > this->getGradeExecute())
+		throw(GradeTooLowException());
+}
+
+void AForm::checkSigned() const
+{
+	if (!this->getSignedStatus())
+		throw(FormNotSignedException());
+}
+
+void AForm::execute(Bureaucrat const& executor) const
+{
+	try
+	{
+		this->checkGrade(executor);
+		this->checkSigned();
+		this->performExecution();
+	}
+	catch (const std::exception& e)
+	{
+		std::cerr << RED << executor.getName() << " failed to execute form " << this->getName()
+			<< " because of: " << e.what() << RESET << std::endl;
+	}
+}
+
 //--------------------------------------------------------------exceptions
 const char* AForm::GradeTooLowException::what() const noexcept
 {
 	return ("AForm exception: bureaucrat grade too low!");
+}
+
+const char *AForm::FormNotSignedException::what() const noexcept
+{
+	return ("AForm exception: form is not signed yet!");
 }
 
 //--------------------------------------------------------------other

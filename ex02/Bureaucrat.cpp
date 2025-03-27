@@ -6,7 +6,7 @@
 /*   By: maustel <maustel@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/20 17:03:43 by maustel           #+#    #+#             */
-/*   Updated: 2025/03/26 10:40:52 by maustel          ###   ########.fr       */
+/*   Updated: 2025/03/27 16:57:12 by maustel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,8 @@ Bureaucrat::Bureaucrat(const Bureaucrat& other): _name(other._name), _grade(othe
 
 Bureaucrat& Bureaucrat::operator=(const Bureaucrat& other)
 {
-	this->_grade = other._grade;
+	if (this != &other)
+		this->_grade = other._grade;
 	std::cout << "Assignment operator: Name cannot be changed since it is constant. " << this->_name << " stays the same." << std::endl;
 	return (*this);
 }
@@ -71,7 +72,7 @@ void Bureaucrat::checkGrade()
 		throw (GradeTooHighException());
 }
 
-void Bureaucrat::signForm(Form& form)
+void Bureaucrat::signForm(AForm& form)
 {
 	try
 	{
@@ -82,6 +83,11 @@ void Bureaucrat::signForm(Form& form)
 		std::cerr << RED << this->_name << " failed to sign form " << form.getName()
 			<< " because of: " << e.what() << RESET << std::endl;
 	}
+}
+
+void Bureaucrat::executeForm(const AForm &form)
+{
+	form.execute(*this);
 }
 
 //----------------------------------------------exceptions-----------------------------------------
