@@ -29,7 +29,7 @@ class RobotomyRequestForm: public AForm
 	RobotomyRequestForm& operator=(const RobotomyRequestForm& other);
 
 	//----------------------- member functions -----------------------
-	void execute(Bureaucrat const & executor) const;
+	void performExecution() const;
 };
 
 #endif

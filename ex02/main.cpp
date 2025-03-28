@@ -12,30 +12,45 @@
 
 #include "Bureaucrat.hpp"
 #include "ShrubberyCreationForm.hpp"
+#include "RobotomyRequestForm.hpp"
+#include "PresidentialPardonForm.hpp"
 
 int main ()
 {
-	//-----------------------------------constructor works
-	std::cout << MAG << "[---------- sign form test works ----------]" << RESET << std::endl;
+	std::cout << MAG << "[---------- sign form tests ----------]" << RESET << std::endl;
+	std::cout << YEL << "[---------- Shrubbery ----------]" << RESET << std::endl;
 
-	Bureaucrat David("David", 13);
+	Bureaucrat HighB("HighB", 6);
+	Bureaucrat LowB("LowB", 150);
 	ShrubberyCreationForm shrubbery("tree");
-	David.executeForm(shrubbery);
-	// shrubbery.execute(David);
-	David.signForm(shrubbery);
-	David.executeForm(shrubbery);
+	HighB.executeForm(shrubbery);
+	HighB.signForm(shrubbery);
+	HighB.executeForm(shrubbery);
+	LowB.executeForm(shrubbery);
 
+	std::cout << YEL << "[---------- Robotomy ----------]" << RESET << std::endl;
+	RobotomyRequestForm robot("home");
+	HighB.executeForm(robot);
+	HighB.signForm(robot);
+	HighB.executeForm(robot);
+	LowB.executeForm(robot);
 
-	//-----------------------------------copy constructer / Assignment operator tests
-	std::cout << MAG << "[---------- copy constructer / Assignment operator tests ----------]" << RESET << std::endl;
+	std::cout << YEL << "[---------- Presidential ----------]" << RESET << std::endl;
+	PresidentialPardonForm president("space");
+	HighB.executeForm(president);
+	HighB.signForm(president);
+	HighB.executeForm(president);
+	HighB.incrementGrade();
+	HighB.executeForm(president);
 
-
-	// ----------------------------------sign form works
-
-
-	// ----------------------------------sign form works NOT
-	std::cout << MAG << "[---------- sign form test works NOT ----------]" << RESET << std::endl;
-
-
+	std::cout << MAG << "[---------- copy tests ----------]" << RESET << std::endl;
+	ShrubberyCreationForm New;
+	ShrubberyCreationForm copy(shrubbery);
+	std::cout << copy;
+	copy = New;
+	std::cout << copy;
+	HighB.signForm(New);
+	std::cout << New;
+	std::cout << copy;
 	return (0);
 }

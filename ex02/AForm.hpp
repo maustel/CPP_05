@@ -44,7 +44,7 @@ class AForm
 	// void setSignedStatus(bool);
 
 	//---------------------other members-------------------------
-	void checkGrade(const Bureaucrat& bureaucrat) const;
+	void checkGradeExec(const Bureaucrat& bureaucrat) const;
 	void checkSigned() const;
 	void beSigned(Bureaucrat& bureaucrat);
 	void execute(Bureaucrat const& executor) const;

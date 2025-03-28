@@ -77,9 +77,9 @@ void AForm::beSigned(Bureaucrat& bureaucrat)
 	}
 }
 
-void AForm::checkGrade(const Bureaucrat &bureaucrat) const
+void AForm::checkGradeExec(const Bureaucrat &bureaucrat) const
 {
-	if (bureaucrat.getGrade() > this->getGradeSign() || bureaucrat.getGrade() > this->getGradeExecute())
+	if (bureaucrat.getGrade() > this->_grade_execute)
 		throw(GradeTooLowException());
 }
 
@@ -93,9 +93,10 @@ void AForm::execute(Bureaucrat const& executor) const
 {
 	try
 	{
-		this->checkGrade(executor);
+		this->checkGradeExec(executor);
 		this->checkSigned();
 		this->performExecution();
+		std::cout << GRN << executor.getName() << " executed " << this->getName() << std::endl;
 	}
 	catch (const std::exception& e)
 	{
