@@ -6,7 +6,7 @@
 /*   By: maustel <maustel@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 11:16:12 by maustel           #+#    #+#             */
-/*   Updated: 2025/03/28 10:04:50 by maustel          ###   ########.fr       */
+/*   Updated: 2025/03/28 11:25:14 by maustel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,33 @@ ShrubberyCreationForm& ShrubberyCreationForm::operator=(const ShrubberyCreationF
 
 void ShrubberyCreationForm::performExecution() const
 {
-// 	Creates a file <target>_shrubbery in the working directory and writes ASCII trees
-// inside it.
-	std::cout << GRN << "SHRUBBERY CREATION" << RESET << std::endl;
+	std::string		filename = this->_target + "_shrubbery";
+	std::ofstream file(filename);
+
+	if (file.is_open())
+	{
+		file << "       /^\\             *                   -\n";
+		file << "     /     \\          ***                 ---\n";
+		file << "   {|       |}       *****               -----\n";
+		file << "    \\       /       *******             -------\n";
+		file << "      \\\\ //        *********           ---------\n";
+		file << "        |         ***********         -----------\n";
+		file << "       -|-       *************       -------------\n";
+		file << "      // \\\\            |                   |       \n";
+		file <<"            *                   -\n";
+        file <<"           ***                 ---\n";
+        file <<"          *****               -----\n";
+        file <<"         *******             -------\n";
+        file <<"        *********           ---------\n";
+        file <<"       ***********         -----------\n";
+        file <<"      *************       -------------\n";
+        file <<"            |                   |\n";
+		std::cout << BLU << this->_target << " shrubbery has been created" << RESET << std::endl;
+
+	}
+	else
+	{
+		std::cerr << RED << "Error: couldn't open file" << RESET << std::endl;
+	}
+	file.close();
 }

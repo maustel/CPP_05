@@ -44,5 +44,5 @@ PresidentialPardonForm& PresidentialPardonForm::operator=(const PresidentialPard
 
 void PresidentialPardonForm::performExecution() const
 {
-	std::cout << GRN << "PRESIDENTIAL PARDON" << RESET << std::endl;
+	std::cout << BLU << this->_target << " has been pardoned by Zaphod Beeblebrox." << RESET << std::endl;
 }

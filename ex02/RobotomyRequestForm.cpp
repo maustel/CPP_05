@@ -44,5 +44,10 @@ RobotomyRequestForm& RobotomyRequestForm::operator=(const RobotomyRequestForm& o
 
 void RobotomyRequestForm::performExecution() const
 {
-	std::cout << GRN << "ROBOTOMY REQUEST" << RESET << std::endl;
+	std::cout << BLU << "<<<<<< DRILLING<>NOISE >>>>>>>" << RESET << std::endl;
+	srand(time(0));
+    if(rand() % 2 == 0)
+        std::cout << BLU << this->_target << " has been robotomized successfully!" << RESET << std::endl;
+    else
+        std::cout << BLU << this->_target << " robotomy failed"  << RESET << std::endl;
 }

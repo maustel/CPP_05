@@ -22,24 +22,25 @@ int main ()
 
 	Bureaucrat HighB("HighB", 6);
 	Bureaucrat LowB("LowB", 150);
-	ShrubberyCreationForm shrubbery("tree");
+	ShrubberyCreationForm shrubbery("Eichhoernchen");
 	HighB.executeForm(shrubbery);
 	HighB.signForm(shrubbery);
 	HighB.executeForm(shrubbery);
 	LowB.executeForm(shrubbery);
 
 	std::cout << YEL << "[---------- Robotomy ----------]" << RESET << std::endl;
-	RobotomyRequestForm robot("home");
+	RobotomyRequestForm robot("Streichholzschaechtelchen");
 	HighB.executeForm(robot);
 	HighB.signForm(robot);
 	HighB.executeForm(robot);
 	LowB.executeForm(robot);
 
 	std::cout << YEL << "[---------- Presidential ----------]" << RESET << std::endl;
-	PresidentialPardonForm president("space");
+	PresidentialPardonForm president("Specht");
 	HighB.executeForm(president);
 	HighB.signForm(president);
 	HighB.executeForm(president);
+	std::cout << "incrementing grade of " << HighB.getName() << std::endl;
 	HighB.incrementGrade();
 	HighB.executeForm(president);
 
